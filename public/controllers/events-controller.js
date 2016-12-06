@@ -1,6 +1,6 @@
-myApp.controller("EventsController", ["$http", function($http) {
+myApp.controller('EventsController', ['$http', 'EventFactory', function($http, EventFactory) {
   var self = this;
-  self.events = [];
+  self.events = EventFactory.events;
   self.uiConfig = {
      calendar:{
        height: 450,

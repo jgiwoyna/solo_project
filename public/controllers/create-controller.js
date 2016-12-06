@@ -1,14 +1,16 @@
-myApp.controller("CreateController", ["$http", function($http) {
+myApp.controller('CreateController', ['$http', 'EventFactory', function($http, EventFactory) {
   var self = this;
-  // self.events = [];
+  self.events = EventFactory.events;
   self.newEvent = {};
+  self.currentEvent = {};
 
   getEvent();
 
   function getEvent() {
-    $http.get('/events')
-    .then(function(response) {
-      self.events = response.data;
+    EventFactory.updateEvents().then(function(response) {
+      self.events = EventFactory.eventData();
+      self.currentEvent = EventFactory.currentEvent();
+      console.log("controller got event from the factory: ", self.events);
     },
     function(response){
       console.log('get error: ', response);
@@ -18,10 +20,11 @@ myApp.controller("CreateController", ["$http", function($http) {
 
   self.createEvent = function(){
     console.log('create event');
-    $http.post('/events', self.newEvent)
+    EventFactory.createEvent(self.newEvent)
       .then(function(response) {
-        self.events.push(response.data);
-        console.log(response);
+        console.log('controller create event response ', response);
+        self.events = EventFactory.eventData();
+        self.currentEvent = EventFactory.currentEvent();
       },
       function(response) {
         console.log('post error: ', response);
