@@ -1,0 +1,25 @@
+{
+  "name": "solo-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.5.9",
+    "angular-route": "^1.5.9",
+    "angular-ui-calendar": "^1.0.2",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "fullcalendar": "^3.1.0",
+    "jquery": "^3.1.1",
+    "moment": "^2.17.1",
+    "mongoose": "^4.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server/app.js",
+    "test": "nodemon server/app.js"
+  },
+  "author": "Joe Giwoyna",
+  "license": "ISC"
+}
