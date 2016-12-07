@@ -1,18 +1,21 @@
 myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', function($http, $compile, EventFactory) {
   var self = this;
-  // self.events = [[{title: 'All Day Event',start: new Date(2016, 11, 1)}]];
+  // self.events = [[{title: 'All Day Event',start: new Date(2016, 11, 1)}, {title: 'Another event',start: new Date(2016, 11, 5)}]];
   self.events = [[]];
 
   self.getEvent = function() {
     if(EventFactory.eventData() === undefined) {
 
       EventFactory.updateEvents().then(function(response) {
-        self.events = [{events: EventFactory.eventData()}];
+        for (var i = 0; i < response.length; i++) {
+          self.events[0].push(response[i]);
+        }
+        // self.events = [response];
         self.currentEvent = EventFactory.currentEvent();
-        console.log("controller got event from the factory: ", self.events);
+        console.log("controller got events from the factory: ", self.events);
       });
     } else {
-      self.events = [{events: EventFactory.eventData()}];
+      self.events = [EventFactory.eventData()];
       self.currentEvent = EventFactory.currentEvent();
     }
   }
@@ -43,19 +46,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
       },
       eventClick: self.alertEventOnClick,
       eventDrop: self.alertOnDrop,
-      eventResize: self.alertOnResize,
-      viewRender: function(view, element) {
-        self.getEvent(view.start, view.end, function(events) {
-          self.events.splice(0, self.events[0].length);
-          self.events[0].push();
-          $timeout(function() {
-            angular.forEach(events, function(e) {
-              self.events.push(e)
-            });
-            view.calendar.addEventSource(self.events);
-          });
-        });
-      }
+      eventResize: self.alertOnResize
     }
   }
 

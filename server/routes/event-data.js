@@ -5,7 +5,7 @@ var Events = require('../models/events');
 router.post('/', function(req, res) {
   console.log('post: ', req.body);
   var addedEvent = new Events(req.body);
-  console.log(addedEvent);
+  console.log('mongoose:', addedEvent);
 
   addedEvent.save(function(err, data){
     console.log('save data: ', data);

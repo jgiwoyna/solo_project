@@ -23,6 +23,7 @@ myApp.factory('EventFactory', ['$http', function($http) {
     var promise = $http.get('/events')
     .then(function(response) {
       events = response.data;
+      return response.data;
     },
     function(response){
       console.log('get error: ', response);
