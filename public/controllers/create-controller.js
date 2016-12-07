@@ -1,21 +1,23 @@
 myApp.controller('CreateController', ['$http', 'EventFactory', function($http, EventFactory) {
   var self = this;
-  self.events = EventFactory.events;
   self.newEvent = {};
   self.currentEvent = {};
 
   getEvent();
 
   function getEvent() {
+    if(EventFactory.eventData() === undefined) {
+
     EventFactory.updateEvents().then(function(response) {
       self.events = EventFactory.eventData();
       self.currentEvent = EventFactory.currentEvent();
       console.log("controller got event from the factory: ", self.events);
-    },
-    function(response){
-      console.log('get error: ', response);
     });
+  } else {
+    self.events = EventFactory.eventData();
+    self.currentEvent = EventFactory.currentEvent();
   }
+}
 
 
   self.createEvent = function(){

@@ -1,8 +1,8 @@
 myApp.factory('EventFactory', ['$http', function($http) {
   console.log('events factory running');
 
-  var currentEvent = {};
-  var events = {};
+  var currentEvent = undefined;
+  var events = undefined;
 
   function createEvent(newEvent){
     console.log('create event');
