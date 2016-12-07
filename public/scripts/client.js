@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ui.calendar']);
+var myApp = angular.module('myApp', ['ngRoute', 'ui.calendar', 'ui.bootstrap.datetimepicker']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
 

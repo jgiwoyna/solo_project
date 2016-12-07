@@ -34,6 +34,7 @@ myApp.factory('EventFactory', ['$http', function($http) {
 
 
   var publicApi = {
+
     currentEvent: function() {
 
       return currentEvent;

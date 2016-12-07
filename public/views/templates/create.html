@@ -1,19 +1,28 @@
 <h1>Add New Event</h1>
-  <div class="event-form">
-    <label for="bands">Bands/Musicians:</label>
-    <input type="text" ng-model="cc.newEvent.bands" placeholder="Bands/Musicians" class="form-control">
+<div class="event-form">
+  <label for="bands">Bands/Musicians:</label>
+  <input type="text" ng-model="cc.newEvent.bands" placeholder="Bands/Musicians" class="form-control">
 
-    <label for="venue">Venue:</label>
-    <input type="text" ng-model="cc.newEvent.venue" placeholder="Venue" class="form-control">
+  <label for="venue">Venue:</label>
+  <input type="text" ng-model="cc.newEvent.venue" placeholder="Venue" class="form-control">
 
-    <label for="date">Date:</label>
-    <input type="text" ng-model="cc.newEvent.date" placeholder="Date" class="form-control">
-
-    <label for="time">Start Time:</label>
-    <input type="text" ng-model="cc.newEvent.time" placeholder="Time" class="form-control">
-
-    <label for="cover">Cover:</label>
-    <input type="text" ng-model="cc.newEvent.cover" placeholder="Cover" class="form-control">
-    <button class="btn btn-primary" ng-click="cc.createEvent()">Submit</button>
+  <label for="date">Date:</label>
+  <!-- <input type="text" ng-model="cc.newEvent.date" placeholder="Date" class="form-control"> -->
+  <div class="dropdown">
+    <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#create" href="#create">
+      <div class="input-group"><input type="text" class="form-control" data-ng-model="data.dateDropDownInput"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+      </div>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+      <datetimepicker data-ng-model="data.dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+    </ul>
   </div>
+
+  <label for="time">Start Time:</label>
+  <input type="text" ng-model="cc.newEvent.time" placeholder="Time" class="form-control">
+
+  <label for="cover">Cover:</label>
+  <input type="text" ng-model="cc.newEvent.cover" placeholder="Cover" class="form-control">
+  <button class="btn btn-primary" ng-click="cc.createEvent()">Submit</button>
+</div>
 </body>
