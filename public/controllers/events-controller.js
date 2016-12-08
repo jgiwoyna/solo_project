@@ -8,6 +8,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
 
       EventFactory.updateEvents().then(function(response) {
         for (var i = 0; i < response.length; i++) {
+          response[i].start = moment(response[i].start).format();
           self.events[0].push(response[i]);
         }
         // self.events = [response];
