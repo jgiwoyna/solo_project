@@ -34,11 +34,21 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
     });
   }
 
+  self.changeTo = {
+           currentTimezone: 'America/Chicago'
+   };
+
+  self.eventRender = function( events, element, view ) {
+    element.append("<p>" + events.venue + "</p>", "<p>" + events.cover + "</p>");
+    $compile(element)(self);
+};
+
 
   self.uiConfig = {
     calendar:{
       height: 450,
       editable: true,
+      currentTimezone: 'America/Chicago',
       header:{
         left: 'month basicWeek basicDay agendaWeek agendaDay',
         center: 'title',
@@ -46,7 +56,9 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
       },
       eventClick: self.alertEventOnClick,
       eventDrop: self.alertOnDrop,
-      eventResize: self.alertOnResize
+      eventResize: self.alertOnResize,
+      eventRender: self.eventRender,
+      changeTo: self.changeTo
     }
   }
 
