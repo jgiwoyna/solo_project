@@ -22,8 +22,13 @@ myApp.factory('EventFactory', ['$http', function($http) {
     console.log('factory getting event');
     var promise = $http.get('/events')
     .then(function(response) {
-      events = response.data;
-      return response.data;
+      events = [];
+      for (var i = 0; i < response.data.length; i++) {
+        response.data[i].start = moment(response.data[i].start).format();
+        events.push(response.data[i]);
+      }
+
+      return events;
     },
     function(response){
       console.log('get error: ', response);

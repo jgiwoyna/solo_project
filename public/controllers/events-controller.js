@@ -1,5 +1,6 @@
 myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', function($http, $compile, EventFactory) {
   var self = this;
+  console.log("events controller is now here!");
   // self.events = [[{title: 'All Day Event',start: new Date(2016, 11, 1)}, {title: 'Another event',start: new Date(2016, 11, 5)}]];
   self.events = [[]];
 

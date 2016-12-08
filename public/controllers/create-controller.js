@@ -1,4 +1,5 @@
 myApp.controller('CreateController', ['$http', 'EventFactory', function($http, EventFactory) {
+  console.log('create controller is here!');
   var self = this;
   self.newEvent = {};
   self.currentEvent = {};
