@@ -7,16 +7,16 @@ myApp.factory('EventFactory', ['$http', function($http) {
   function createEvent(newEvent){
     console.log('create event');
     var promise = $http.post('/events', newEvent)
-      .then(function(response) {
-        events.push(response.data);
-        console.log('factory create event response ', response.data);
-        return getEvent();
-      },
-      function(response) {
-        console.log('post error: ', response.data);
-      });
-      return promise;
-    }
+    .then(function(response) {
+      events.push(response.data);
+      console.log('factory create event response ', response.data);
+      return getEvent();
+    },
+    function(response) {
+      console.log('post error: ', response.data);
+    });
+    return promise;
+  }
 
   function getEvent() {
     console.log('factory getting event');

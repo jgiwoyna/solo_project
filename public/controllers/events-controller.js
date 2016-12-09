@@ -1,7 +1,6 @@
 myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', function($http, $compile, EventFactory) {
   var self = this;
   console.log("events controller is now here!");
-  // self.events = [[{title: 'All Day Event',start: new Date(2016, 11, 1)}, {title: 'Another event',start: new Date(2016, 11, 5)}]];
   self.events = [[]];
 
   self.getEvent = function() {
@@ -12,7 +11,6 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
           response[i].start = moment(response[i].start).format();
           self.events[0].push(response[i]);
         }
-        // self.events = [response];
         self.currentEvent = EventFactory.currentEvent();
         console.log("controller got events from the factory: ", self.events);
       });
@@ -30,6 +28,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
       self.events = EventFactory.eventData();
       self.currentEvent = EventFactory.currentEvent();
       console.log('controller create event response ', response.data);
+      self.newEvent = {};
     },
     function(response) {
       console.log('post error: ', response);
@@ -37,22 +36,22 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
   }
 
   self.changeTo = {
-           currentTimezone: 'America/Chicago'
-   };
+    currentTimezone: 'America/Chicago'
+  };
 
   self.eventRender = function( events, element, view ) {
-    element.append("<p>" + events.venue + "</p>", "<p>" + events.cover + "</p>");
+    element.append("<p>" + events.venue + "<br>" + events.cover + "</p>");
     $compile(element)(self);
-};
+  };
 
 
   self.uiConfig = {
     calendar:{
       height: 450,
-      editable: true,
+      editable: false,
       currentTimezone: 'America/Chicago',
       header:{
-        left: 'month basicWeek basicDay agendaWeek agendaDay',
+        left: 'month basicWeek basicDay agendaWeek',
         center: 'title',
         right: 'today prev,next'
       },

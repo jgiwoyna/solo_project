@@ -1,5 +1,43 @@
+body {
+  font-family: 'Vollkorn', serif;
+}
 
-        @font-face {
-            font-family: 'Glyphicons Halflings';
-            src: url('/fonts/glyphicons-halflings-regular.eot');
-        }
+.jumbotron {
+  background-color: #a0202a;
+  color: #f2f1da;
+  font-family: 'Bungee Shade', cursive;
+}
+
+a {
+  color: #a0202a;
+}
+
+a:focus {
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+.fc-event {
+  background-color: #a0202a;
+  color: #f2f1da;
+}
+
+.info {
+  margin: 5px 0 5px 0;
+}
+
+.submit {
+  background-color: #a0202a;
+  color: #f2f1da;
+  border: none;
+  margin: 5px 0;
+}
+
+.submit:hover {
+  background-color: #EEEEEE;
+  color: black;
+  border: none;
+}
