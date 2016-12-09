@@ -28,7 +28,6 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
       self.events = EventFactory.eventData();
       self.currentEvent = EventFactory.currentEvent();
       console.log('controller create event response ', response.data);
-      self.newEvent = {};
     },
     function(response) {
       console.log('post error: ', response);
@@ -51,7 +50,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
       editable: false,
       currentTimezone: 'America/Chicago',
       header:{
-        left: 'month basicWeek basicDay agendaWeek',
+        left: 'month basicWeek basicDay',
         center: 'title',
         right: 'today prev,next'
       },

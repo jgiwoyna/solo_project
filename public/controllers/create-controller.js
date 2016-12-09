@@ -28,6 +28,7 @@ myApp.controller('CreateController', ['$http', 'EventFactory', function($http, E
       console.log('controller create event response ', response);
       self.events = EventFactory.eventData();
       self.currentEvent = EventFactory.currentEvent();
+      self.newEvent = {};
       alert("Your event has been added!");
     },
     function(response) {
