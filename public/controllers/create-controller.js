@@ -44,8 +44,8 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
 
   self.createEvent = function(){
     console.log('create event');
-    // console.log(AuthFactory.currentUser);
-    // if(AuthFactory.currentUser != null){
+    console.log(AuthFactory.getCurrentUser());
+    if(AuthFactory.getCurrentUser() != null){
       AuthFactory.getCurrentUser().getToken().then(function(idToken){
         var promise = $http({
           method: 'POST',
@@ -67,9 +67,9 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
         });
         return promise;
       });
-    // } else {
-    //   alert("You must be logged into to create event!")
-    // }
+    } else {
+      alert("You must be logged into to create event!")
+    }
   }
 
 
