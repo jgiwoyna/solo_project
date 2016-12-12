@@ -1,7 +1,8 @@
-myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', function($http, $compile, EventFactory) {
+myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'EventFactory', function($http, $compile, AuthFactory, EventFactory) {
   var self = this;
   console.log("events controller is now here!");
   self.events = [[]];
+
 
   self.getEvent = function() {
     if(EventFactory.eventData() === undefined) {
@@ -19,6 +20,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'EventFactory', funct
       self.currentEvent = EventFactory.currentEvent();
     }
   }
+
 
 
   self.createEvent = function(){

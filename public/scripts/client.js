@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ui.calendar', 'ui.bootstrap.datetimepicker']);
+var myApp = angular.module('myApp', ['ngRoute', 'firebase', 'ui.calendar', 'ui.bootstrap.datetimepicker']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
 
@@ -6,6 +6,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
   .when('/events', {
     templateUrl: '/views/templates/events.html',
     controller: 'EventsController',
+    cache: false,
     controllerAs: 'ec'
   })
   .when('/create' ,{
