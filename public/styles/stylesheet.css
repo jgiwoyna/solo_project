@@ -1,5 +1,6 @@
 body {
   font-family: 'Vollkorn', serif;
+  background-color: #f2f1da;
 }
 
 .jumbotron {
@@ -20,6 +21,16 @@ a:hover {
   color: black;
 }
 
+.nav>li>a:focus {
+  background-color: #f2f1da;
+  color: #a0202a;
+  border: 1px solid #a0202a;
+}
+.nav>li>a:hover {
+  background-color: #a0202a;
+  color: #f2f1da;
+}
+
 .fc-event {
   background-color: #a0202a;
   color: #f2f1da;
@@ -38,6 +49,21 @@ a:hover {
   transform: scale(1.1);
 }
 
+.fc-button {
+  background-color: #a0202a;
+  color: #f2f1da;
+}
+
+.fc-state-default {
+  background-color: #a0202a;
+  color: #f2f1da;
+}
+
+.fc-state-active {
+  background-color: #f2f1da;
+  color: #a0202a;
+}
+
 .info {
   margin: 5px 0 5px 0;
 }
@@ -50,7 +76,7 @@ a:hover {
 }
 
 .submit:hover {
-  background-color: #EEEEEE;
-  color: black;
-  border: none;
+  background-color: #f2f1da;
+  color: #a0202a;
+  border: 1px solid #a0202a;
 }

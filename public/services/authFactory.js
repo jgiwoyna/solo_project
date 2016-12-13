@@ -5,30 +5,35 @@ myApp.factory('AuthFactory', ['$firebaseAuth', '$http', function($firebaseAuth, 
 
 
 
-  function logIn(){
+  function logIn() {
+
     auth.$signInWithPopup("google").then(function(firebaseUser) {
+
       currentUser = firebaseUser;
-      console.log("Firebase Authenticated as: ", firebaseUser.user.displayName);
+
+      console.log('Firebase Authenticated as: ', firebaseUser.user.displayName);
+      alert('You are now logged in as ' + firebaseUser.user.displayName);
       return currentUser;
     }).catch(function(error) {
-      console.log("Authentication failed: ", error);
+      console.log('Authentication failed: ', error);
     });
   };
 
 
-  auth.$onAuthStateChanged(function(firebaseUser){
+  auth.$onAuthStateChanged(function(firebaseUser) {
 
     currentUser = firebaseUser;
+
     if(firebaseUser) {
-      
-      firebaseUser.getToken().then(function(idToken){
+
+      firebaseUser.getToken().then(function(idToken) {
         $http({
           method: 'GET',
           url: '/events',
           headers: {
             id_token: idToken
           }
-        }).then(function(response){
+        }).then(function(response) {
           console.log(response.data);
           response = response.data;
         });
@@ -40,23 +45,30 @@ myApp.factory('AuthFactory', ['$firebaseAuth', '$http', function($firebaseAuth, 
   });
 
   function getCurrentUser() {
+
     return currentUser;
   }
 
-  function logOut(){
-    auth.$signOut().then(function(){
+  function logOut() {
+
+    auth.$signOut().then(function() {
       console.log('Logging the user out!');
+      alert('You are now logged out.');
     });
   };
 
   var publicApi = {
+
     logIn: function() {
+
       return logIn();
     },
     logOut: function() {
+
       return logOut();
     },
     getCurrentUser: function() {
+
       return getCurrentUser();
     }
   };

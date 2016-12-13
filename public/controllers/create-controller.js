@@ -1,7 +1,11 @@
 myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', 'EventFactory', function($firebaseAuth, $http, AuthFactory, EventFactory) {
+
   console.log('create controller is here!');
+
   var auth = $firebaseAuth();
+
   var self = this;
+
   self.newEvent = {};
   self.currentEvent = {};
   self.currentUser = AuthFactory.getCurrentUser();
@@ -13,7 +17,7 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
       EventFactory.updateEvents().then(function(response) {
         self.events = EventFactory.eventData();
         self.currentEvent = EventFactory.currentEvent();
-        console.log("controller got events from the factory: ", self.events);
+        console.log('controller got events from the factory: ', self.events);
       });
 
   }
@@ -23,27 +27,14 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
   self.logOut = AuthFactory.logOut;
 
 
-  // self.createEvent = function(){
-  //   console.log('create event');
-  //   EventFactory.createEvent(self.newEvent)
-  //   .then(function(response) {
-  //     console.log('controller create event response ', response);
-  //     self.events = EventFactory.eventData();
-  //     self.currentEvent = EventFactory.currentEvent();
-  //     self.newEvent = {};
-  //     alert("Your event has been added!");
-  //   },
-  //   function(response) {
-  //     console.log('post error: ', response);
-  //   });
-  // }
-
   self.createEvent = function() {
 
     console.log('create event');
     console.log(AuthFactory.getCurrentUser());
-    if(AuthFactory.getCurrentUser() != null){
-      AuthFactory.getCurrentUser().getToken().then(function(idToken){
+
+    if(AuthFactory.getCurrentUser() != null) {
+
+      AuthFactory.getCurrentUser().getToken().then(function(idToken) {
         var promise = $http({
           method: 'POST',
           url: '/create-form',
@@ -55,7 +46,7 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
           getEvent();
           console.log('factory create event response ', response.data);
           self.newEvent = {};
-          alert("Your event has been added!");
+          alert('Your event has been added!');
           return getEvent();
         },
         function(response) {
@@ -64,7 +55,7 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
         return promise;
       });
     } else {
-      alert("You must be logged into to create event!")
+      alert('You must be logged into to create event!')
     }
   }
 

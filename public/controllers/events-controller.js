@@ -1,10 +1,13 @@
 myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'EventFactory', function($http, $compile, AuthFactory, EventFactory) {
+
   var self = this;
-  console.log("events controller is now here!");
+
+  console.log('events controller is now here!');
+
   self.events = [[]];
 
-
   self.getEvent = function() {
+
     if(EventFactory.eventData() === undefined) {
 
       EventFactory.updateEvents().then(function(response) {
@@ -13,7 +16,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
           self.events[0].push(response[i]);
         }
         self.currentEvent = EventFactory.currentEvent();
-        console.log("controller got events from the factory: ", self.events);
+        console.log('controller got events from the factory: ', self.events);
       });
     } else {
       self.events = [EventFactory.eventData()];
@@ -22,6 +25,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
   }
 
   self.createEvent = function() {
+
     console.log('create event');
     EventFactory.createEvent(self.newEvent)
     .then(function(response) {
@@ -35,15 +39,17 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
   }
 
   self.eventRender = function(events, element, view) {
+
     element.append("<p>" + events.venue + "<br>" + events.cover + "</p>");
     $compile(element)(self);
   };
 
   self.uiConfig = {
-    calendar:{
+
+    calendar: {
       height: 450,
       editable: false,
-      header:{
+      header: {
         left: 'month basicWeek basicDay',
         center: 'title',
         right: 'today prev,next'

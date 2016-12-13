@@ -8,12 +8,12 @@ myApp.config(['$routeProvider', function($routeProvider) {
     controller: 'EventsController',
     controllerAs: 'ec'
   })
-  .when('/create' ,{
+  .when('/create', {
     templateUrl: '/views/templates/create.html',
     controller: 'CreateController',
     controllerAs: 'cc'
   })
-  .when('/venues' ,{
+  .when('/venues', {
     templateUrl: '/views/templates/venues.html',
     controller: 'VenuesController',
     controllerAs: 'vc'

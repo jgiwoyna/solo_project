@@ -4,30 +4,9 @@ myApp.factory('EventFactory', ['$firebaseAuth', 'AuthFactory', '$http', function
   var currentEvent = undefined;
   var events = undefined;
 
-//   function createEvent(newEvent){
-//     console.log('create event');
-//     AuthFactory.getCurrentUser().getToken().then(function(idToken){
-//     var promise = $http({
-//       method: 'POST',
-//       url: '/create-form',
-//       headers: {
-//         id_token: idToken
-//       },
-//       data: newEvent
-//     }).then(function(response) {
-//       events.push(response.data);
-//       console.log('factory create event response ', response.data);
-//       newEvent = {};
-//       return getEvent();
-//     },
-//     function(response) {
-//       console.log('post error: ', response.data);
-//     });
-//     return promise;
-//   });
-// }
 
   function getEvent() {
+
     console.log('factory getting events');
     var promise = $http.get('/events')
     .then(function(response) {
@@ -39,7 +18,7 @@ myApp.factory('EventFactory', ['$firebaseAuth', 'AuthFactory', '$http', function
 
       return events;
     },
-    function(response){
+    function(response) {
       console.log('get error: ', response);
     });
     return promise;
