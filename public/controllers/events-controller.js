@@ -21,8 +21,6 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
     }
   }
 
-
-
   self.createEvent = function(){
     console.log('create event');
     EventFactory.createEvent(self.newEvent)
@@ -36,21 +34,15 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
     });
   }
 
-  self.changeTo = {
-    currentTimezone: 'America/Chicago'
-  };
-
   self.eventRender = function( events, element, view ) {
     element.append("<p>" + events.venue + "<br>" + events.cover + "</p>");
     $compile(element)(self);
   };
 
-
   self.uiConfig = {
     calendar:{
       height: 450,
       editable: false,
-      currentTimezone: 'America/Chicago',
       header:{
         left: 'month basicWeek basicDay',
         center: 'title',
@@ -59,8 +51,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
       eventClick: self.alertEventOnClick,
       eventDrop: self.alertOnDrop,
       eventResize: self.alertOnResize,
-      eventRender: self.eventRender,
-      changeTo: self.changeTo
+      eventRender: self.eventRender
     }
   }
 
