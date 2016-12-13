@@ -23,10 +23,6 @@ app.use(decoder.token);
 
 app.use('/create-form', create);
 
-// app.get('/', function(req, res){
-//   res.sendFile(path.resolve('./public/views/index.html'));
-// });
-
 mongoConnection.connect();
 
 app.listen(portDecision, function(){

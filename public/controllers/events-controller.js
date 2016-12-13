@@ -21,7 +21,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
     }
   }
 
-  self.createEvent = function(){
+  self.createEvent = function() {
     console.log('create event');
     EventFactory.createEvent(self.newEvent)
     .then(function(response) {
@@ -34,7 +34,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
     });
   }
 
-  self.eventRender = function( events, element, view ) {
+  self.eventRender = function(events, element, view) {
     element.append("<p>" + events.venue + "<br>" + events.cover + "</p>");
     $compile(element)(self);
   };
@@ -56,8 +56,6 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
   }
 
   self.getEvent();
-
-
 
 
 }]);

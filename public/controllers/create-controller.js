@@ -9,20 +9,16 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
   getEvent();
 
   function getEvent() {
-    // if(EventFactory.eventData() === undefined) {
 
       EventFactory.updateEvents().then(function(response) {
         self.events = EventFactory.eventData();
         self.currentEvent = EventFactory.currentEvent();
         console.log("controller got events from the factory: ", self.events);
       });
-    // } else {
-    //   self.events = EventFactory.eventData();
-    //   self.currentEvent = EventFactory.currentEvent();
-    // }
+
   }
 
-  // This code runs whenever the user logs in
+
   self.logIn = AuthFactory.logIn;
   self.logOut = AuthFactory.logOut;
 
@@ -42,7 +38,8 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
   //   });
   // }
 
-  self.createEvent = function(){
+  self.createEvent = function() {
+
     console.log('create event');
     console.log(AuthFactory.getCurrentUser());
     if(AuthFactory.getCurrentUser() != null){
@@ -55,7 +52,6 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
           },
           data: self.newEvent
         }).then(function(response) {
-          // self.events.push(response.data);
           getEvent();
           console.log('factory create event response ', response.data);
           self.newEvent = {};

@@ -6,7 +6,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
   .when('/events', {
     templateUrl: '/views/templates/events.html',
     controller: 'EventsController',
-    cache: false,
     controllerAs: 'ec'
   })
   .when('/create' ,{
