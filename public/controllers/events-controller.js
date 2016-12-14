@@ -51,7 +51,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
   self.uiConfig = {
 
     calendar: {
-      height: 450,
+      height: 1400,
       editable: false,
       header: {
         left: 'month basicWeek basicDay',
