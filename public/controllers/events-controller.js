@@ -18,10 +18,12 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
         self.currentEvent = EventFactory.currentEvent();
         console.log('controller got events from the factory: ', self.events);
       });
+
     } else {
       self.events = [EventFactory.eventData()];
       self.currentEvent = EventFactory.currentEvent();
     }
+
   }
 
   self.createEvent = function() {
@@ -36,12 +38,14 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
     function(response) {
       console.log('post error: ', response);
     });
+
   }
 
   self.eventRender = function(events, element, view) {
 
     element.append("<p>" + events.venue + "<br>" + events.cover + "</p>");
     $compile(element)(self);
+
   };
 
   self.uiConfig = {
@@ -59,6 +63,7 @@ myApp.controller('EventsController', ['$http', '$compile', 'AuthFactory', 'Event
       eventResize: self.alertOnResize,
       eventRender: self.eventRender
     }
+
   }
 
   self.getEvent();

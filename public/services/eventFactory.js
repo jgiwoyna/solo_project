@@ -1,5 +1,6 @@
 myApp.factory('EventFactory', ['$firebaseAuth', 'AuthFactory', '$http', function($firebaseAuth, AuthFactory, $http) {
-  console.log('events factory running');
+  
+  console.log('events factory is running');
 
   var currentEvent = undefined;
   var events = undefined;
@@ -8,7 +9,9 @@ myApp.factory('EventFactory', ['$firebaseAuth', 'AuthFactory', '$http', function
   function getEvent() {
 
     console.log('factory getting events');
+
     var promise = $http.get('/events')
+
     .then(function(response) {
       events = [];
       for (var i = 0; i < response.data.length; i++) {
@@ -17,11 +20,15 @@ myApp.factory('EventFactory', ['$firebaseAuth', 'AuthFactory', '$http', function
       }
 
       return events;
+
     },
+
     function(response) {
       console.log('get error: ', response);
     });
+
     return promise;
+
   }
 
 
@@ -45,6 +52,7 @@ myApp.factory('EventFactory', ['$firebaseAuth', 'AuthFactory', '$http', function
 
       return createEvent(newEvent);
     }
+
   };
 
   return publicApi;

@@ -15,9 +15,11 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
   function getEvent() {
 
       EventFactory.updateEvents().then(function(response) {
+
         self.events = EventFactory.eventData();
         self.currentEvent = EventFactory.currentEvent();
         console.log('controller got events from the factory: ', self.events);
+
       });
 
   }
@@ -35,6 +37,7 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
     if(AuthFactory.getCurrentUser() != null) {
 
       AuthFactory.getCurrentUser().getToken().then(function(idToken) {
+
         var promise = $http({
           method: 'POST',
           url: '/create-form',
@@ -42,6 +45,7 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
             id_token: idToken
           },
           data: self.newEvent
+
         }).then(function(response) {
           getEvent();
           console.log('factory create event response ', response.data);
@@ -49,14 +53,19 @@ myApp.controller('CreateController', ['$firebaseAuth', '$http', 'AuthFactory', '
           alert('Your event has been added!');
           return getEvent();
         },
+
         function(response) {
           console.log('post error: ', response.data);
         });
+
         return promise;
+
       });
+
     } else {
-      alert('You must be logged into to create event!')
+      alert('You must be logged into to create event!');
     }
+
   }
 
 

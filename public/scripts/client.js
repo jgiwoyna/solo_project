@@ -19,7 +19,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     controllerAs: 'vc'
   })
   .otherwise({
-    redirectTo: 'EventsController'
+    redirectTo: 'events'
   });
 
 }]);

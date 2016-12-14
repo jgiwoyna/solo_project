@@ -1,6 +1,9 @@
 myApp.factory('AuthFactory', ['$firebaseAuth', '$http', function($firebaseAuth, $http) {
+
   console.log('auth factory is running');
+
   var auth = $firebaseAuth();
+
   var currentUser = null;
 
 
@@ -14,9 +17,12 @@ myApp.factory('AuthFactory', ['$firebaseAuth', '$http', function($firebaseAuth, 
       console.log('Firebase Authenticated as: ', firebaseUser.user.displayName);
       alert('You are now logged in as ' + firebaseUser.user.displayName);
       return currentUser;
+
     }).catch(function(error) {
       console.log('Authentication failed: ', error);
+      alert('Log in failed.');
     });
+
   };
 
 
@@ -33,11 +39,14 @@ myApp.factory('AuthFactory', ['$firebaseAuth', '$http', function($firebaseAuth, 
           headers: {
             id_token: idToken
           }
+
         }).then(function(response) {
           console.log(response.data);
           response = response.data;
         });
+
       });
+
     } else {
       console.log('Not logged in or not authorized.');
     }
@@ -52,9 +61,12 @@ myApp.factory('AuthFactory', ['$firebaseAuth', '$http', function($firebaseAuth, 
   function logOut() {
 
     auth.$signOut().then(function() {
+
       console.log('Logging the user out!');
       alert('You are now logged out.');
+
     });
+
   };
 
   var publicApi = {
@@ -71,6 +83,7 @@ myApp.factory('AuthFactory', ['$firebaseAuth', '$http', function($firebaseAuth, 
 
       return getCurrentUser();
     }
+
   };
 
   return publicApi;

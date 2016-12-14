@@ -13,14 +13,16 @@ router.post('/', function(req, res) {
   addedEvent.save(function(err, data) {
 
     console.log('save data: ', data);
-    
+
     if(err) {
       console.log('ERR: ', err);
       res.sendStatus(500);
     } else {
       res.send(data);
     }
+
   });
+
 });
 
 module.exports = router;

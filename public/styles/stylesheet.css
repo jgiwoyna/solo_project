@@ -26,6 +26,7 @@ a:hover {
   color: #a0202a;
   border: 1px solid #a0202a;
 }
+
 .nav>li>a:hover {
   background-color: #a0202a;
   color: #f2f1da;
@@ -62,6 +63,10 @@ a:hover {
 .fc-state-active {
   background-color: #f2f1da;
   color: #a0202a;
+}
+
+.fc-today {
+  background-color: #f2da65;
 }
 
 .info {
